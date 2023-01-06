@@ -1,0 +1,49 @@
+name: Run rspec
+
+on: pull_request
+
+jobs:
+  test:
+    runs-on: ubuntu-20.04
+    timeout-minutes: 10
+    services:
+      postgres:
+        image: postgres:15-alpine
+        ports:
+          - 5432:5432
+        env:
+          POSTGRES_DB: rails_test
+          POSTGRES_USER: rails
+          POSTGRES_PASSWORD: password
+    env:
+      RAILS_ENV: test
+      DATABASE_URL: postgres://rails:password@localhost:5432/rails_test
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Install fonts-noto-cjk
+        run: |
+          sudo apt-get update
+          sudo apt-get install fonts-noto-cjk
+
+      - name: Install Ruby and gems
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+
+      - name: Build assets
+        run: bin/rails assets:precompile
+
+      # - name: Set up database schema
+      #   run: bin/rails db:schema:load
+
+      - name: Run RSpec
+        run: bundle exec rspec
+
+      - name: Archive screenshots
+        uses: actions/upload-artifact@v3
+        with:
+          name: screenshots
+          path: tmp/capybara
+        if: failure()
