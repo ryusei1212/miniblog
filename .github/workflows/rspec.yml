@@ -1,23 +1,23 @@
 name: Run rspec
+
 on: pull_request
 
 jobs:
-  rspec:
-    runs-on: ubuntu-latest
+  test:
+    runs-on: ubuntu-20.04
     timeout-minutes: 10
     services:
       postgres:
         image: postgres:15-alpine
         ports:
-          - "5432:5432"
+          - 5432:5432
         env:
           POSTGRES_DB: rails_test
           POSTGRES_USER: rails
           POSTGRES_PASSWORD: password
     env:
       RAILS_ENV: test
-      DATABASE_URL: "postgres://rails:password@localhost:5432/rails_test"
-
+      DATABASE_URL: postgres://rails:password@localhost:5432/rails_test
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -38,7 +38,7 @@ jobs:
       - name: Set up database schema
         run: bin/rails db:schema:load
 
-      - name: Run rspec
+      - name: Run RSpec
         run: bundle exec rspec
 
       - name: Archive screenshots
