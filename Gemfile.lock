@@ -284,14 +284,13 @@ DEPENDENCIES
   jsbundling-rails
   pg (~> 1.1)
   puma (~> 5.0)
-  rails (~> 7.0.4)
+  rails (= 7.0.4)
   rspec-rails
   selenium-webdriver
   sgcop!
   sprockets-rails
   stimulus-rails
   turbo-rails
-  tzinfo-data
   web-console
   webdrivers
 
