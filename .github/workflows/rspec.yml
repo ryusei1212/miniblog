@@ -1,7 +1,5 @@
 name: Run rspec
-on:
-  push:
-  pull_request:
+on: [push pull_request]
 
 jobs:
   rspec:
@@ -9,7 +7,7 @@ jobs:
     timeout-minutes: 10
     services:
       postgres:
-        image: postgres:11-alpine
+        image: postgres:15-alpine
         ports:
           - "5432:5432"
         env:
@@ -24,13 +22,28 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
+      - name: Install fonts-noto-cjk
+        run: |
+          sudo apt-get update
+          sudo apt-get install fonts-noto-cjk
+
       - name: Install Ruby and gems
-        uses: ruby/setup-ruby@ee2113536afb7f793eed4ce60e8d3b26db912da4
+        uses: ruby/setup-ruby@v1
         with:
           bundler-cache: true
+
+      - name: Build assets
+        run: bin/rails assets:precompile
 
       - name: Set up database schema
         run: bin/rails db:schema:load
 
       - name: Run rspec
         run: bundle exec rspec
+
+       - name: Archive screenshots
+        uses: actions/upload-artifact@v3
+        with:
+          name: screenshots
+          path: tmp/capybara
+        if: failure()
