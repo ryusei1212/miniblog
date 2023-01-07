@@ -24,6 +24,8 @@ end
 
 group :development do
   gem 'web-console'
+  gem 'haml-rails'
+  gem 'html2haml'
 end
 
 group :test do
