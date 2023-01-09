@@ -1,0 +1,7 @@
+%h1.mt-4 タイムライン
+- @posts.each do |post|
+  .card.mb-1
+    .card-body
+      .card-text
+        %p= post.content
+        %p= l post.created_at
