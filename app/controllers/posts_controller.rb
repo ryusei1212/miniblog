@@ -2,18 +2,15 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.order(created_at: :desc)
-  end
-
-  def new
     @post = Post.new
   end
 
   def create
     @post = Post.new(post_params)
     if @post.save
-       redirect_to posts_path, notice: "#{@post}を投稿しました。"
+       redirect_to posts_path, notice: '投稿に成功しました。'
     else
-      render :new, status: :unprocessable_entity
+      redirect_to posts_path, alert: '本文を入力してください'
     end
   end
 
