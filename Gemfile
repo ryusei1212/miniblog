@@ -7,10 +7,12 @@ gem 'rails', '7.0.4'
 
 gem 'bootsnap', require: false
 gem 'cssbundling-rails'
+gem 'haml-rails'
 gem 'jbuilder'
 gem 'jsbundling-rails'
 gem 'pg', '~> 1.1'
 gem 'puma', '~> 5.0'
+gem 'simple_form'
 gem 'sprockets-rails'
 gem 'stimulus-rails'
 gem 'turbo-rails'
@@ -23,9 +25,8 @@ group :development, :test do
 end
 
 group :development do
-  gem 'web-console'
-  gem 'haml-rails'
   gem 'html2haml'
+  gem 'web-console'
 end
 
 group :test do
