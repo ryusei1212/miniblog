@@ -29,6 +29,7 @@ end
 group :development do
   gem 'html2haml'
   gem 'web-console'
+  gem 'letter_opener_web'
 end
 
 group :test do
