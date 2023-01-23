@@ -1,3 +1,4 @@
-- flash.each do |msg_type, msg|
-  .alert{ class: "alert-#{msg_type == 'notice' ? 'success' : 'danger' }" }
-    = msg
+- flash.each do |message_type, message|
+  .alert{ class: " alert-dismissible fade show alert-#{message_type == 'notice' ? 'success' : 'danger' }" }
+    = message
+    %button{ class: 'btn-close', 'data-bs-dismiss': 'alert' }
