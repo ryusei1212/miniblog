@@ -1,5 +1,4 @@
 class PostsController < ApplicationController
-
   def index
     @posts = Post.order(created_at: :desc)
     @post = Post.new
@@ -8,7 +7,7 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     if @post.save
-       redirect_to posts_path, notice: '投稿に成功しました。'
+      redirect_to posts_path, notice: '投稿に成功しました。'
     else
       redirect_to posts_path, alert: '本文を入力してください'
     end
