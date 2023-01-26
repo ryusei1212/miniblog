@@ -7,4 +7,6 @@
         %li.nav-item.dropdown
           = link_to current_user.email, '#', class: 'nav-link dropdown-toggle', id: 'dropdown-menu-link', role: 'button', 'data-bs-toggle': :dropdown, 'aria-expanded': false
           %ul.dropdown-menu.dropdown-menu-end.dropdown-menu-lg-start
+            = link_to 'プロフィール', user_path(current_user), class: 'dropdown-item'
+            %hr.dropdown-divider
             = button_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'dropdown-item'

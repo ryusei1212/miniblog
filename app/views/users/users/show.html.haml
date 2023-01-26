@@ -1,8 +1,12 @@
-%h1 ユーザープロフィール
-%table.table
+%h1.mt-4 ユーザープロフィール
+%table.table.table-hover
   %tr
     %th ユーザー名
     %td= current_user.name
   %tr
     %th プロフィール
-    %td=
+    %td= current_user.profile
+  %tr
+    %th ブログURL
+    %td= link_to 'ブログ一覧', posts_path
+= link_to '編集', edit_user_path(current_user)

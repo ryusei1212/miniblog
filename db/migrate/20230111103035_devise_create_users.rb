@@ -7,7 +7,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[7.0]
       t.string :name, null: false
       t.string :email, null: false
       t.string :encrypted_password, null: false
-      t.string :profile, null: false, default: ''
+      t.text :profile, null: false, default: ''
       t.string :url, null: false, default: ''
 
       ## Recoverable

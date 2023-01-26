@@ -1,2 +1,4 @@
-%h1 Users::Users#edit
-%p Find me in app/views/users/users/edit.html.haml
+= simple_form_for @user do |f|
+  = f.input :name
+  = f.input :profile
+  = f.button :submit, class: 'btn btn-primary'
