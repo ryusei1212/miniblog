@@ -9,7 +9,7 @@ class Users::UsersController < ApplicationController
 
   def update
     if @user.update(user_params)
-      redirect_to user_path(@user), notice: '更新に成功しました'
+      redirect_to user_path(@user)
     else
       render :edit, status: :unprocessable_entity
     end

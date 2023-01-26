@@ -1,10 +1,10 @@
 %h1.mt-4 ユーザープロフィール
 %table.table.table-hover
   %tr
-    %th ユーザー名
+    %th= User.human_attribute_name :name
     %td= current_user.name
   %tr
-    %th プロフィール
+    %th= User.human_attribute_name :profile
     %td= current_user.profile
   %tr
     %th ブログURL
