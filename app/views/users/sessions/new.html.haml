@@ -1,5 +1,4 @@
 %h2.mt-4= t('.sign_in')
-= render 'shared/flash'
 = simple_form_for(resource, as: resource_name, url: session_path(resource_name), data: { turbo: false }) do |f|
   .form-inputs
     = f.input :name, required: false, autofocus: true, input_html: { autocomplete: "name" }

@@ -2,11 +2,11 @@
 %table.table.table-hover
   %tr
     %th= User.human_attribute_name :name
-    %td= current_user.name
+    %td= @user.name
   %tr
     %th= User.human_attribute_name :profile
-    %td= current_user.profile
+    %td= @user.profile
   %tr
     %th ブログURL
-    %td= link_to 'ブログ一覧', posts_path
+    %td= link_to 'ブログ一覧', user_posts_path(current_user)
 = link_to '編集', edit_user_path(current_user)

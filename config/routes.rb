@@ -2,11 +2,18 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {
     sessions: 'users/sessions'
   }
-  root 'posts#index'
-  scope module: :users do
-    resources :users, only: %i[show edit update]
+  root 'users/posts#index'
+
+  # namespace :users do
+  #   resources :users, only: %i[show edit update] do
+  #     resources :posts, only: %i[index show create edit update destroy]
+  #   end
+  # end
+
+
+  resources :users, only: %i[show edit update], module: :users do
+    resources :posts, only: %i[index show create edit update destroy]
   end
-  resources :posts, only: %i[index create]
 
   mount LetterOpenerWeb::Engine, at: "/letter_opener_web" if Rails.env.development?
 end

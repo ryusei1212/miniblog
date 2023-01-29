@@ -1,12 +1,20 @@
 .d-flex.justify-content-end.mt-2.position-absolute.top-0.end-10
   = render 'shared/flash'
 .row.mt-5
-  .col-4
-    = render 'form', post: @post
-  .col-8
+  .col-5
+    = render 'form', post: @post, user: current_user
+  .col-5
     - @posts.each do |post|
       .card.mb-1
         .card-body
           .card-text
             %p= post.content
-            %p= l post.created_at
+            .d-flex
+              %p.me-1= l post.created_at
+              = link_to '🖋', edit_user_post_path(current_user, post)
+  .col-2
+    - @timeline.each do |post|
+      .card
+        .card-body
+          .card-text
+            = post.content
