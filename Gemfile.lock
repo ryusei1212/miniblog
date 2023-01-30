@@ -278,6 +278,8 @@ GEM
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
     sexp_processor (4.16.1)
+    shoulda-matchers (5.2.0)
+      activesupport (>= 5.2.0)
     simple_form (5.1.0)
       actionpack (>= 5.2)
       activemodel (>= 5.2)
@@ -343,6 +345,7 @@ DEPENDENCIES
   rspec-rails
   selenium-webdriver
   sgcop!
+  shoulda-matchers
   simple_form
   sprockets-rails
   stimulus-rails

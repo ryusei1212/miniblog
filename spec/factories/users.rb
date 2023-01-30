@@ -3,6 +3,6 @@ FactoryBot.define do
     name { 'bob' }
     email { 'text@example.com' }
     password { 'password' }
-    after(:create) { |user| user.confirm }
+    after(:create, &:confirm)
   end
 end

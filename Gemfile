@@ -7,6 +7,8 @@ gem 'rails', '7.0.4'
 
 gem 'bootsnap', require: false
 gem 'cssbundling-rails'
+gem 'devise'
+gem 'devise-i18n'
 gem 'haml-rails'
 gem 'jbuilder'
 gem 'jsbundling-rails'
@@ -16,8 +18,6 @@ gem 'simple_form'
 gem 'sprockets-rails'
 gem 'stimulus-rails'
 gem 'turbo-rails'
-gem 'devise'
-gem 'devise-i18n'
 
 group :development, :test do
   gem 'debug', platforms: %i[mri mingw x64_mingw]
@@ -28,12 +28,13 @@ end
 
 group :development do
   gem 'html2haml'
-  gem 'web-console'
   gem 'letter_opener_web'
+  gem 'web-console'
 end
 
 group :test do
   gem 'capybara'
   gem 'selenium-webdriver'
+  gem 'shoulda-matchers'
   gem 'webdrivers'
 end
