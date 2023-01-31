@@ -3,16 +3,14 @@ class Users::PostsController < Users::ApplicationController
 
   def index
     @posts = current_user.posts.default_order
-    @timeline = Post.order(created_at: :asc)
-    @post = current_user.posts.build
   end
 
   def create
     @post = current_user.posts.build(post_params)
     if @post.save
-      redirect_to user_posts_path, notice: '投稿に成功しました。'
+      redirect_to user_timelines_path, notice: '投稿に成功しました。'
     else
-      redirect_to user_posts_path, alert: '本文を入力してください'
+      redirect_to user_timelines_path, alert: '本文を入力してください'
     end
   end
 
@@ -21,7 +19,7 @@ class Users::PostsController < Users::ApplicationController
 
   def update
     if @post.update(post_params)
-      redirect_to user_posts_path
+      redirect_to user_timelines_path
     else
       render :edit, status: :unprocessable_entity
     end
@@ -29,7 +27,7 @@ class Users::PostsController < Users::ApplicationController
 
   def destroy
     @post.destroy!
-    redirect_to user_posts_path, notice: '投稿を削除しました'
+    redirect_to user_timelines_path, notice: '投稿を削除しました'
   end
 
   private
