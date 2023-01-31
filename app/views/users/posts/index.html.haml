@@ -11,7 +11,7 @@
             %p= post.content
             .d-flex
               %p.me-1= l post.created_at
-              = link_to '🖋', edit_user_post_path(current_user, post)
+              = link_to '🖋', edit_user_post_path(current_user, post), class: 'text-decoration-none'
   .col-2
     - @timeline.each do |post|
       .card
