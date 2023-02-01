@@ -3,13 +3,14 @@
     = link_to 'Ⓜiniblog', root_path, class: 'text-white navbar-brand ms-2'
     %button.navbar-toggler{"aria-controls": "navbarNavDropdown", "aria-expanded": "false", "aria-label": "Toggle navigation", "data-bs-target": "#navbarNavDropdown", "data-bs-toggle": "collapse", type: "button"}
       %span.navbar-toggler-icon
-    #navbarNavDropdown.collapse.navbar-collapse
-      %ul.navbar-nav
-        %li.nav-item
-          = link_to 'ユーザー', users_path, class: 'nav-link'
-        %li.nav-item.dropdown
-          = link_to current_user.email, '#', class: 'nav-link dropdown-toggle', id: 'dropdown-menu-link', role: 'button', 'data-bs-toggle': :dropdown, 'aria-expanded': false
-          %ul.dropdown-menu{'aria-labelledby': 'dropdown-menu-link'}
-            %li= link_to 'プロフィール', user_path(current_user), class: 'dropdown-item'
-            %hr.dropdown-divider
-              %li= button_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'dropdown-item'
+    - if user_signed_in?
+      #navbarNavDropdown.collapse.navbar-collapse
+        %ul.navbar-nav
+          %li.nav-item
+            = link_to 'ユーザー', users_path, class: 'nav-link'
+          %li.nav-item.dropdown
+            = link_to current_user.email, '#', class: 'nav-link dropdown-toggle', id: 'dropdown-menu-link', role: 'button', 'data-bs-toggle': :dropdown, 'aria-expanded': false
+            %ul.dropdown-menu{'aria-labelledby': 'dropdown-menu-link'}
+              %li= link_to 'プロフィール', user_path(current_user), class: 'dropdown-item'
+              %hr.dropdown-divider
+                %li= button_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'dropdown-item'

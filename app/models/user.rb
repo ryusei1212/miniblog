@@ -8,7 +8,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable
 
-  validates :name, presence: true, length: { maximum: 20 }, format: { with: /\A[a-zA-Z]+\z/ }
+  validates :name, presence: true, length: { maximum: 20 } # TODO seedでデータを作成する際に条件が厳しするぎるため format: { with: /\A[a-zA-Z]+\z/ }
   validates :profile, length: { maximum: 200 }
 
   def follow(other_user)
