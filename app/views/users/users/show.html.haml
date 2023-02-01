@@ -1,4 +1,8 @@
 %h1.mt-4 ユーザープロフィール
+フォロー
+= link_to @user.following.count, following_user_path(@user)
+フォロワー
+= link_to @user.followers.count, followers_user_path(@user)
 %table.table.table-hover
   %tr
     %th= User.human_attribute_name :name
@@ -8,5 +12,6 @@
     %td= @user.profile
   %tr
     %th ブログURL
-    %td= link_to 'ブログ一覧', user_posts_path(current_user)
-= link_to '編集', edit_user_path(current_user)
+    %td= link_to 'ブログ一覧', user_posts_path(current_user) # TODO フォローしたユーザーのみ見られるようにする
+- if current_user == @user
+  = link_to '編集', edit_user_path(current_user)

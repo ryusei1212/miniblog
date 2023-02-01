@@ -11,9 +11,9 @@ Rails.application.routes.draw do
   #   end
   # end
 
-  resources :users, only: %i[show edit update], module: :users do
-    resources :timelines, only: :index
+  resources :users, only: %i[index show edit update], module: :users do
     resources :posts, only: %i[index show create edit update destroy]
+    resources :timelines, only: :index
     get :following, :followers, on: :member
   end
 
