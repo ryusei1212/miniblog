@@ -5,6 +5,6 @@
       %th ブログ投稿数
   - @users.each do |user|
     %tr
-      - if current_user != user
+      - unless current_user == user
         %td= link_to user.name, user_path(user)
         %td= user.posts.count
