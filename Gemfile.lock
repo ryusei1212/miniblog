@@ -85,6 +85,9 @@ GEM
     bootsnap (1.15.0)
       msgpack (~> 1.2)
     builder (3.2.4)
+    bullet (7.0.4)
+      activesupport (>= 3.0.0)
+      uniform_notifier (~> 1.11)
     capybara (3.38.0)
       addressable
       matrix
@@ -118,6 +121,8 @@ GEM
     factory_bot_rails (6.2.0)
       factory_bot (~> 6.2.0)
       railties (>= 5.0.0)
+    faker (3.0.0)
+      i18n (>= 1.8.11, < 2)
     globalid (1.0.0)
       activesupport (>= 5.0)
     haml (6.1.1)
@@ -301,6 +306,7 @@ GEM
     tzinfo (2.0.5)
       concurrent-ruby (~> 1.0)
     unicode-display_width (2.4.2)
+    uniform_notifier (1.16.0)
     warden (1.2.9)
       rack (>= 2.0.9)
     web-console (4.2.0)
@@ -326,12 +332,14 @@ PLATFORMS
 
 DEPENDENCIES
   bootsnap
+  bullet
   capybara
   cssbundling-rails
   debug
   devise
   devise-i18n
   factory_bot_rails
+  faker
   haml-rails
   html2haml
   jbuilder

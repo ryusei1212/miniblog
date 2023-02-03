@@ -1,5 +1,9 @@
 class Users::UsersController < Users::ApplicationController
-  before_action :set_user, only: %i[edit update]
+  before_action :set_user, only: %i[edit update following followers]
+
+  def index
+    @users = User.order(id: :asc)
+  end
 
   def show
     @user = User.find(params[:id])
@@ -14,6 +18,12 @@ class Users::UsersController < Users::ApplicationController
     else
       render :edit, status: :unprocessable_entity
     end
+  end
+
+  def following
+  end
+
+  def followers
   end
 
   private
