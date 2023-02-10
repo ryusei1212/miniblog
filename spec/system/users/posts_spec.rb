@@ -26,13 +26,13 @@ RSpec.describe '投稿内容のCRUD機能', type: :system do
   describe '投稿' do
     it '文章を投稿できる' do
       sign_in user
-      visit user_posts_path(user)
+      visit user_timelines_path(user)
       fill_in 'post[content]', with: 'おはようございます'
       expect do
         click_button '投稿する'
       end.to change(Post, :count).by(1)
 
-      expect(page).to have_current_path user_posts_path(user)
+      expect(page).to have_current_path user_timelines_path(user)
       expect(page).to have_content 'おはようございます'
       expect(page).to have_content '投稿に成功しました'
     end
@@ -48,7 +48,7 @@ RSpec.describe '投稿内容のCRUD機能', type: :system do
       click_on '更新する'
 
       expect(page).to have_content '別の文章'
-      expect(page).to have_current_path user_posts_path(user)
+      expect(page).to have_current_path user_timelines_path(user)
     end
   end
 
