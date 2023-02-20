@@ -2,7 +2,7 @@ class Users::UsersController < Users::ApplicationController
   before_action :set_user, only: %i[edit update following followers]
 
   def index
-    @users = User.order(id: :asc)
+    @users = User.default_order.page(params[:page]).per(2)
   end
 
   def show

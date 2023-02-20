@@ -9,3 +9,4 @@
       - unless current_user == user
         %td= link_to user.name, user_path(user)
         %td= user.posts.count
+= paginate @users
