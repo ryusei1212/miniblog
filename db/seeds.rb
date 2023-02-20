@@ -6,7 +6,7 @@ User.create!(
   confirmed_at: Time.zone.now
 )
 
-10.times do
+5.times do
   User.create!(
     name: Faker::Name.unique.name,
     email: Faker::Internet.unique.email,
@@ -17,6 +17,6 @@ end
 
 User.all.each do |user|
   user.posts.create!(
-    content: Faker::Lorem.paragraph_by_chars(number: 100)
+    content: Faker::Lorem.paragraph_by_chars(number: 50)
   )
 end

@@ -2,7 +2,8 @@ class Users::PostsController < Users::ApplicationController
   before_action :set_post, only: %i[edit update destroy]
 
   def index
-    @posts = Post.default_order
+    user = User.find(params[:user_id])
+    @posts = user.posts.default_order
   end
 
   def create

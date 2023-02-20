@@ -1,11 +1,11 @@
 .row.mt-5
   .col
     - @posts.each do |post|
-      - if current_user.posts.include?(post)
-        .card.mb-1
-          .card-body
-            .card-text
-              %p= post.content
-              .d-flex
-                %p.me-1= l post.created_at
+      .card.mb-1
+        .card-body
+          .card-text
+            %p= post.content
+            .d-flex
+              %p.me-1= l post.created_at
+              - if current_user.posts.include?(post)
                 = link_to '🖋', edit_user_post_path(current_user, post), class: 'text-decoration-none'
