@@ -5,7 +5,7 @@
     = render 'users/posts/form', post: @post, user: current_user
   .col-8
     - @timelines.each do |post|
-      .card.mb-1
+      .card.mb-2
         .card-body
           .card-text
             %p= post.content

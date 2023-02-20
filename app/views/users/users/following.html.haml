@@ -1,3 +1,8 @@
-%h2 フォローユーザー
-- @user.following.each do |follow_user|
-  = follow_user.name
+%h2.mt-4 フォローユーザー
+%table.table.table-hover
+  %thead
+    %th
+  %tbody
+    - @user.following.each do |follow_user|
+      %tr
+        %td= follow_user.name
