@@ -11,5 +11,8 @@
             %p= post.content
             .d-flex
               %p.me-1= l post.created_at
+              = link_to '#', class: 'text-reset' do
+                %i.bi.bi-heart
               - if current_user.posts.include?(post)
-                = link_to '🖋', edit_user_post_path(current_user, post), class: 'text-decoration-none'
+                = link_to edit_user_post_path(current_user, post), class: 'text-reset ms-auto' do
+                  %i.bi.bi-pen
