@@ -12,7 +12,9 @@ Rails.application.routes.draw do
   # end
 
   resources :users, only: %i[index show edit update], module: :users do
-    resources :posts, only: %i[index show create edit update destroy]
+    resources :posts, only: %i[index show create edit update destroy] do
+      resource :likes, only: %i[create destroy]
+    end
     resources :timelines, only: :index
     resource :relationships, only: %i[create destroy]
     get :following, :followers, on: :member
