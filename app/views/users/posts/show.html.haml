@@ -1,0 +1,11 @@
+.card.mt-5.w-50.mx-auto
+  .card-body
+    .card-text
+      %p= @post.content
+      .d-flex
+        %p.me-1= l @post.created_at
+        - if current_user.posts.include?(@post)
+          = link_to edit_user_post_path(current_user, @post), class: 'text-reset ms-auto' do
+            %i.bi.bi-pen-fill
+      - if @post.likes.count.positive?
+        .border-top= link_to "#{@post.likes.count}件のいいね", users_path
