@@ -1,4 +1,4 @@
-%h1.mt-4 ユーザープロフィール
+%h1.mt-4= @user.name
 .d-flex
   = link_to "#{@user.following.count}フォロー", following_user_path(@user), class: 'text-decoration-none me-2'
   = link_to "#{@user.followers.count}フォロワー", followers_user_path(@user), class: 'text-decoration-none'
@@ -8,19 +8,5 @@
       = link_to 'フォロー解除', user_relationships_path(@user), data: { turbo_method: :delete }, class: 'btn btn-danger ms-auto'
     - else
       = link_to 'フォロー', user_relationships_path(@user), data: { turbo_method: :post }, class: 'btn btn-primary ms-auto'
-
-%table.table.table-hover
-  %tr
-    %th= User.human_attribute_name :name
-    %td= @user.name
-  %tr
-    %th= User.human_attribute_name :profile
-    %td= @user.profile
-  %tr
-    %th ブログURL
-    %td= link_to 'ブログ一覧', user_posts_path(@user)
-  %tr
-    %th ブログ投稿数
-    %td= @user.posts.count
 - if current_user == @user
   = link_to '編集', edit_user_path(current_user)
