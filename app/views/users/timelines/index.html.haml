@@ -5,7 +5,7 @@
     = render 'users/posts/form', post: @post, user: current_user
   .col-8
     - @timelines.each do |post|
-      .card.mb-2
+      .card.mb-2.w-75.mx-auto
         .card-body
           .card-text
             %p= link_to post.content, user_post_path(post.user, post), class: 'text-reset text-decoration-none'
