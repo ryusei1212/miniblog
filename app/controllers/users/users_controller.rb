@@ -1,5 +1,5 @@
 class Users::UsersController < Users::ApplicationController
-  before_action :set_user, only: %i[edit update following followers]
+  before_action :set_user, only: %i[edit update]
 
   def index
     @users = User.default_order.page(params[:page])

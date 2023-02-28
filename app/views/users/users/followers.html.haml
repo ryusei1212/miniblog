@@ -1,0 +1,9 @@
+%h2.mt-4 フォロワー
+%table.table.table-hover
+  %thead
+    %th
+  %tbody
+  - if current_user.followers.presence
+    - current_user.followers.each do |follower_user|
+      %tr
+        %td= follower_user.name

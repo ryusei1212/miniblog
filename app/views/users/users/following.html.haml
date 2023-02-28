@@ -1,8 +1,9 @@
-%h2.mt-4 フォローユーザー
+%h2.mt-4 フォロー中
 %table.table.table-hover
   %thead
     %th
   %tbody
-    - @user.following.each do |follow_user|
+  - if current_user.following.presence
+    - current_user.following.each do |follow_user|
       %tr
         %td= follow_user.name
