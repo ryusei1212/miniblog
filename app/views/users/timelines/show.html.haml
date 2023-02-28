@@ -2,23 +2,23 @@
   = render 'shared/flash'
 .row.mt-5
   .col-4
-    = render 'users/posts/form', post: @post, user: current_user
+    = render 'users/posts/form', post: @post
   .col-8
     - @timelines.each do |post|
       .card.mb-2.w-75.mx-auto
         .card-body
           .card-text
-            %p= link_to post.content, user_post_path(post.user, post), class: 'text-reset text-decoration-none'
+            %p= link_to post.content, post_path(post), class: 'text-reset text-decoration-none'
             .d-flex
               %p.me-1= l post.created_at
               - if current_user.like?(post)
-                = link_to user_post_like_path(current_user, post), data: { turbo_method: :delete }, class: 'unlike-link text-reset' do
+                = link_to post_like_path(post), data: { turbo_method: :delete }, class: 'unlike-link text-reset' do
                   %i.bi.bi-heart-fill.text-danger
               - else
-                = link_to user_post_like_path(current_user, post), data: { turbo_method: :post }, class: 'like-link text-reset' do
+                = link_to post_like_path(post), data: { turbo_method: :post }, class: 'like-link text-reset' do
                   %i.bi.bi-heart
               - if post.likes.count.positive?
                 %span.ms-1= post.likes.count
               - if current_user.posts.include?(post)
-                = link_to edit_user_post_path(current_user, post), class: 'text-reset ms-auto' do
+                = link_to edit_post_path(post), class: 'text-reset ms-auto' do
                   %i.bi.bi-pen-fill

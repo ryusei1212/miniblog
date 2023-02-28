@@ -1,12 +1,14 @@
-%h1.mt-4= @user.name
-.d-flex
-  = link_to "#{@user.following.count}フォロー", following_user_path(@user), class: 'text-decoration-none me-2'
-  = link_to "#{@user.followers.count}フォロワー", followers_user_path(@user), class: 'text-decoration-none'
-
-  - unless current_user == @user
-    - if current_user.following?(@user)
-      = link_to 'フォロー解除', user_relationships_path(@user), data: { turbo_method: :delete }, class: 'btn btn-danger ms-auto'
-    - else
-      = link_to 'フォロー', user_relationships_path(@user), data: { turbo_method: :post }, class: 'btn btn-primary ms-auto'
-- if current_user == @user
-  = link_to '編集', edit_user_path(current_user)
+.card.w-75.mx-auto.mt-3
+  .card-body
+    .card-body
+      .card-title
+        %span.fs-2= @user.name # TODO ユーザーアイコンを表示するようにする
+        .card-text= @user.profile
+        %p.card-text.text-muted.mt-2= "#{l @user.created_at}からminiblog利用しています"
+        .d-flex.justify-content-evenly
+          = link_to "#{@user.following.count}フォロー", following_user_path(@user), class: 'text-decoration-none me-2'
+          = link_to "#{@user.followers.count}フォロワー", followers_user_path(@user), class: 'text-decoration-none'
+          - if current_user == @user
+            = link_to 'プロフィール編集', edit_user_path(current_user), class: 'btn btn-primary mb-2 ms-auto'
+          - else
+            = render 'follow_form', user: @user

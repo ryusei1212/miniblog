@@ -13,9 +13,9 @@ class Users::PostsController < Users::ApplicationController
   def create
     @post = current_user.posts.build(post_params)
     if @post.save
-      redirect_to user_timelines_path, notice: '投稿に成功しました。'
+      redirect_to timeline_path, notice: '投稿に成功しました。'
     else
-      redirect_to user_timelines_path, alert: '本文を入力してください'
+      redirect_to timeline_path, alert: '本文を入力してください'
     end
   end
 
@@ -24,7 +24,7 @@ class Users::PostsController < Users::ApplicationController
 
   def update
     if @post.update(post_params)
-      redirect_to user_timelines_path
+      redirect_to timeline_path
     else
       render :edit, status: :unprocessable_entity
     end
@@ -32,7 +32,7 @@ class Users::PostsController < Users::ApplicationController
 
   def destroy
     @post.destroy!
-    redirect_to user_timelines_path, notice: '投稿を削除しました'
+    redirect_to timeline_path, notice: '投稿を削除しました'
   end
 
   private
