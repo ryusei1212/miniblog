@@ -1,0 +1,7 @@
+.mt-5
+  - @liked_post.liked_users.each do |user|
+    .border.w-50.mx-auto.p-2
+      .d-flex
+        .fs-3= link_to user.name, user_path(user)
+        = render 'users/users/follow_form', user:
+      %p= user.profile

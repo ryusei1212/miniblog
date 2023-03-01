@@ -4,7 +4,7 @@
       .card-title
         %span.fs-2= @user.name # TODO ユーザーアイコンを表示するようにする
         .card-text= @user.profile
-        %p.card-text.text-muted.mt-2= "#{l @user.created_at}からminiblog利用しています"
+        %p.card-text.text-muted.mt-2= "#{l @user.created_at, format: :short}からminiblog利用しています"
         .d-flex.justify-content-evenly
           = link_to "#{@user.following.count}フォロー", following_user_path(@user), class: 'text-decoration-none me-2'
           = link_to "#{@user.followers.count}フォロワー", followers_user_path(@user), class: 'text-decoration-none'
@@ -12,3 +12,11 @@
             = link_to 'プロフィール編集', edit_user_path(current_user), class: 'btn btn-primary mb-2 ms-auto'
           - else
             = render 'follow_form', user: @user
+
+%ul.nav.nav-tabs.w-75.mx-auto.nav-fill
+  %li.nav-item
+    = link_to '投稿一覧', user_path(@user), class: "nav-link #{'active' if current_page?(user_path(@user))}"
+  %li.nav-item
+    = link_to 'お気に入りの投稿', '#', {class: "nav-link"}
+
+= render @posts

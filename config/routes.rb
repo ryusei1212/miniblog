@@ -20,7 +20,7 @@ Rails.application.routes.draw do
       resource :relationships, only: %i[create destroy]
       get :following, :followers, on: :member
     end
-    resources :posts, except: :new do
+    resources :posts, except: %i[index new] do
       resources :likes, only: :index
       resource :like, only: %i[create destroy]
     end
