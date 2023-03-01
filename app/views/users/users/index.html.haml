@@ -3,7 +3,6 @@
     %tr
       %th= User.human_attribute_name(:name)
       %th ブログ投稿数
-      -# %th
   - @users.each do |user|
     %tr
       - unless current_user == user

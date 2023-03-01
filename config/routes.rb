@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   scope module: 'users' do
     resource :timeline, only: :show
     resources :users, only: %i[index show edit update] do
+      get :likes
       resource :relationships, only: %i[create destroy]
       get :following, :followers, on: :member
     end

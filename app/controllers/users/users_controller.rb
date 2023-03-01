@@ -27,6 +27,11 @@ class Users::UsersController < Users::ApplicationController
   def followers
   end
 
+  def likes
+    user = User.find(params[:user_id])
+    @liked_posts = user.liking_post
+  end
+
   private
 
   def set_user
