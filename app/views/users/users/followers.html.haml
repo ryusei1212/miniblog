@@ -1,9 +1,7 @@
-%h2.mt-4 フォロワー
-%table.table.table-hover
-  %thead
-    %th
-  %tbody
-  - if current_user.followers.presence
-    - current_user.followers.each do |follower_user|
-      %tr
-        %td= follower_user.name
+.text-center.fs-3.my-3 フォロワー
+.mt-1
+  - if @user.followers.presence
+    - @user.followers.each do |follower_user|
+      .border.w-50.mx-auto.p-2
+        .d-flex
+          = link_to follower_user.name, user_path(follower_user), class: 'fs-3 text-reset'

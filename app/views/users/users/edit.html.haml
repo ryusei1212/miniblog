@@ -1,6 +1,6 @@
 .mt-5
   .w-50.mx-auto
-    = simple_form_for @user do |f|
+    = simple_form_for current_user do |f|
       = f.input :name
       = f.input :profile, input_html: { rows: 5 }, placeholder: '200字以内で入力してください'
       = f.button :submit, class: 'btn btn-primary'

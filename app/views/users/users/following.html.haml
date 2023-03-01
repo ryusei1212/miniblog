@@ -1,9 +1,7 @@
-%h2.mt-4 フォロー中
-%table.table.table-hover
-  %thead
-    %th
-  %tbody
-  - if current_user.following.presence
-    - current_user.following.each do |follow_user|
-      %tr
-        %td= follow_user.name
+.text-center.fs-3.my-3 フォロー中
+.mt-1
+  - if @user.following.presence
+    - @user.following.each do |follow_user|
+      .border.w-50.mx-auto.p-2
+        .d-flex
+          = link_to follow_user.name, user_path(follow_user), class: 'fs-3 text-reset'

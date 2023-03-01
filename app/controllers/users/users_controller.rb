@@ -1,12 +1,11 @@
 class Users::UsersController < Users::ApplicationController
-  before_action :set_user, only: %i[edit update]
+  before_action :set_user, only: %i[show following followers]
 
   def index
     @users = User.default_order.page(params[:page])
   end
 
   def show
-    @user = User.find(params[:id])
     @posts = @user.posts.default_order
   end
 
@@ -14,8 +13,8 @@ class Users::UsersController < Users::ApplicationController
   end
 
   def update
-    if @user.update(user_params)
-      redirect_to user_path(@user)
+    if current_user.update(user_params)
+      redirect_to user_path(current_user)
     else
       render :edit, status: :unprocessable_entity
     end
@@ -27,15 +26,10 @@ class Users::UsersController < Users::ApplicationController
   def followers
   end
 
-  def likes
-    user = User.find(params[:user_id])
-    @liked_posts = user.liking_post
-  end
-
   private
 
   def set_user
-    @user = current_user
+    @user = User.find(params[:id])
   end
 
   def user_params
