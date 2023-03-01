@@ -12,10 +12,10 @@ Rails.application.routes.draw do
   #   get :following, :followers, on: :member
   # end
 
-  root 'users/timelines#show'
+  root 'users/timelines#index'
 
   scope module: 'users' do
-    resource :timeline, only: :show
+    resources :timelines, only: :index
     resources :users, only: %i[index show edit update] do
       get :likes
       resource :relationships, only: %i[create destroy]
