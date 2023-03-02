@@ -1,0 +1,6 @@
+- if current_user.like?(post)
+  = link_to post_like_path(post), data: { turbo_method: :delete }, class: 'unlike-link text-reset' do
+    %i.bi.bi-heart-fill.text-danger
+- else
+  = link_to post_like_path(post), data: { turbo_method: :post }, class: 'like-link text-reset' do
+    %i.bi.bi-heart
