@@ -1,9 +1,12 @@
 .card.my-1.w-75.mx-auto
   .card-body
     .card-text
-      %p= post.content
+      %p= link_to post.content, post_path(post), class: 'text-reset'
       .d-flex
         %p.me-1= l post.created_at
+        = render 'shared/like_link', post:
+        - if post.likes.count.positive?
+          %span.ms-1= post.likes.count
         - if current_user.posts.include?(post)
           = link_to edit_post_path(post), class: 'text-reset ms-auto' do
             %i.bi.bi-pen-fill
