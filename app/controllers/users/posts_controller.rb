@@ -1,13 +1,10 @@
 class Users::PostsController < Users::ApplicationController
   before_action :set_post, only: %i[edit update destroy]
 
-  def index
-    user = User.find(params[:user_id])
-    @posts = user.posts.default_order
-  end
-
   def show
     @post = Post.find(params[:id])
+    @comment = @post.comments.build
+    @comments = @post.comments.preload(:user).default_order
   end
 
   def create

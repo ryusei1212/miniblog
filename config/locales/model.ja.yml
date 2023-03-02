@@ -5,3 +5,5 @@ ja:
     attributes:
       post:
         content: 投稿内容
+      comment:
+        content: コメント
