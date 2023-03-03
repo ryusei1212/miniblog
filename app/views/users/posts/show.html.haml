@@ -19,4 +19,4 @@
 
 -# FIXME renderの引数に@commentsを渡してもapp/views/users/posts/comments/_comment.html.hamlを呼べなかった
 - if @comments.present?
-  = render 'comments', comments: @comments
+  = render 'users/posts/comments/comments', comments: @comments

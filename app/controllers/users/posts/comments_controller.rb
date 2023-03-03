@@ -1,16 +1,26 @@
 class Users::Posts::CommentsController < Users::Posts::ApplicationController
+  skip_before_action :set_post, only: :destroy
+
   def create
-    @comment = @post.comments.build(comment_params)
-    if @comment.save
+    comment = @post.comments.build(comment_params)
+    comment.user = current_user
+    if comment.save
       redirect_to post_path(@post), notice: 'コメントしました'
     else
-      render 'users/posts/show', status: :unprocessable_entity
+      redirect_to post_path(@post), alert: 'コメントを入力してください'
     end
+  end
+
+  def destroy
+    comment = Comment.find(params[:id])
+    post = comment.post
+    comment.destroy!
+    redirect_to post_path(post), alert: 'コメントを削除しました'
   end
 
   private
 
   def comment_params
-    params.require(:comment).permit(:content, :user_id)
+    params.require(:comment).permit(:content)
   end
 end

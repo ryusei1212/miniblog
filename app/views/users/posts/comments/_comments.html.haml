@@ -1,0 +1,9 @@
+- comments.each do |comment|
+  .card.w-50.mx-auto.my-3
+    .card-header
+      = "#{comment.user.name}さんのコメント"
+    .card-body
+      = comment.content
+      - if comment.user == current_user
+        = link_to comment_path(comment), data: { turbo_method: :delete, turbo_confirm: '本当に削除しますか？' }, class: 'text-reset ms-auto comment-destroy-link' do
+          %i.bi.bi-trash
