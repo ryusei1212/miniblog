@@ -1,9 +1,12 @@
 - comments.each do |comment|
-  .card.w-50.mx-auto.my-3
+  .card.my-3
     .card-header
-      = "#{comment.user.name}さんのコメント"
+      .d-flex
+        .pt-1= "#{comment.user.name}さんのコメント"
+        - if comment.user == current_user
+          .ms-auto
+            = link_to comment_path(comment), data: { turbo_method: :delete, turbo_confirm: '本当に削除しますか？' }, class: 'text-reset comment-destroy-link btn' do
+              %i.bi.bi-trash 削除
+
     .card-body
       = comment.content
-      - if comment.user == current_user
-        = link_to comment_path(comment), data: { turbo_method: :delete, turbo_confirm: '本当に削除しますか？' }, class: 'text-reset ms-auto comment-destroy-link' do
-          %i.bi.bi-trash
