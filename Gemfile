@@ -13,7 +13,9 @@ gem 'haml-rails'
 gem 'jbuilder'
 gem 'jsbundling-rails'
 gem 'kaminari'
+# rails newデフォルトのため
 gem 'pg', '~> 1.1'
+# rails newデフォルトのため
 gem 'puma', '~> 5.0'
 gem 'simple_form'
 gem 'sprockets-rails'

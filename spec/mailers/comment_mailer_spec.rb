@@ -1,14 +1,14 @@
-require "rails_helper"
+require 'rails_helper'
 
 RSpec.describe CommentMailer, type: :mailer do
   let(:user) { create(:user, email: 'user@example.com') }
-  let(:post) { create(:post, user: user) }
+  let(:post) { create(:post, user:) }
 
   let(:alice) { create(:user, name: 'alice') }
-  let(:alices_comment) { create(:comment, post: post, user: alice, content: 'とてもいい内容ですね') }
+  let(:alices_comment) { create(:comment, post:, user: alice, content: 'とてもいい内容ですね') }
 
   describe 'notify_comment' do
-    let(:mail) { CommentMailer.with(post: post, comment: alices_comment).notify_comment.deliver_now }
+    let(:mail) { CommentMailer.with(post:, comment: alices_comment).notify_comment.deliver_now }
 
     it '正しい件名で送信すること' do
       expect(mail.subject).to eq('aliceさんからのコメント')
