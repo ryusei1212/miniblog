@@ -1,14 +1,22 @@
-.card.mt-5.w-50.mx-auto
-  .card-body
-    .card-text
-      %p= @post.content
-      .d-flex
-        %p.me-1= l @post.created_at
-        = render 'shared/like_link', post: @post
+.w-50.mx-auto
+  .card.mt-5
+    .card-body
+      .card-text
+        %p= @post.content
+        .d-flex
+          %p.me-1= l @post.created_at
+          = render 'shared/like_link', post: @post
+          - if @post.likes.count.positive?
+            %span.ms-1= @post.likes.count
+          - if current_user.posts.include?(@post)
+            = link_to edit_post_path(@post), class: 'text-reset ms-auto' do
+              %i.bi.bi-pen-fill
         - if @post.likes.count.positive?
-          %span.ms-1= @post.likes.count
-        - if current_user.posts.include?(@post)
-          = link_to edit_post_path(@post), class: 'text-reset ms-auto' do
-            %i.bi.bi-pen-fill
-      - if @post.likes.count.positive?
-        .border-top= link_to "#{@post.likes.count}件のいいね", post_likes_path(@post), class: 'text-reset'
+          .border-top= link_to "#{@post.likes.count}件のいいね", post_likes_path(@post), class: 'text-reset'
+
+  .border-top.mt-2
+    .mx-auto.mt-2
+      = render 'users/posts/comments/form', post: @post, comment: @comment
+
+  - if @comments.present?
+    = render 'users/posts/comments/comments', comments: @comments

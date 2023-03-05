@@ -24,6 +24,7 @@ Rails.application.routes.draw do
       resource :relationship, only: %i[create destroy]
     end
     resources :posts, except: %i[index new] do
+      resources :comments, module: :posts, only: %i[create update destroy], shallow: true
       resources :likes, only: :index
       resource :like, only: %i[create destroy]
     end
