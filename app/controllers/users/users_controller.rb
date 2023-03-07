@@ -6,7 +6,7 @@ class Users::UsersController < Users::ApplicationController
   end
 
   def show
-    @posts = @user.posts.default_order
+    @posts = @user.posts.with_attached_image.default_order
   end
 
   def edit

@@ -3,6 +3,7 @@
     .card-body
       .card-text
         %p= @post.content
+        = posted_image(@post.image)
         .d-flex
           %p.me-1= l @post.created_at
           = render 'shared/like_link', post: @post

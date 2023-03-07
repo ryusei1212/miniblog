@@ -1,4 +1,4 @@
 = simple_form_for(post) do |f|
   = f.input :content, input_html: { rows: 4 }, maxlength: 140, label: false, placeholder: '140字以内で入力してください'
-  = f.input :image
+  = f.input :image, label: '.', label_html: { class: 'bi bi-image' }, input_html: { accept: '.jpg, .png' }
   = f.button :submit, class: 'btn btn-primary disabled'
