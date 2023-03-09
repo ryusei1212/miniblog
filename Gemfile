@@ -5,6 +5,7 @@ ruby '3.1.3'
 
 gem 'rails', '7.0.4'
 
+gem 'active_storage_validations'
 gem 'bootsnap', require: false
 gem 'cssbundling-rails'
 gem 'devise'

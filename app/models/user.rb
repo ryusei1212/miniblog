@@ -13,6 +13,7 @@ class User < ApplicationRecord
 
   validates :name, presence: true, length: { maximum: 20 } # TODO: seedでデータを作成する際に条件が厳しするぎるため format: { with: /\A[a-zA-Z]+\z/ }
   validates :profile, length: { maximum: 200 }
+  validates :image, content_type: %w[image/png image/jpeg], size: { less_than: 5.megabytes }
 
   scope :default_order, -> { order(created_at: :desc) }
 
