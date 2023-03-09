@@ -2,7 +2,7 @@ class Users::UsersController < Users::ApplicationController
   before_action :set_user, only: %i[show following followers]
 
   def index
-    @users = User.default_order.page(params[:page])
+    @users = User.default_order.with_attached_image.includes(:image_attachment).page(params[:page])
   end
 
   def show
@@ -33,6 +33,6 @@ class Users::UsersController < Users::ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:name, :profile)
+    params.require(:user).permit(:name, :profile, :image)
   end
 end

@@ -3,6 +3,8 @@ ja:
     models:
       posts:
     attributes:
+      user:
+        image: 画像
       post:
         content: 投稿内容
       comment:
