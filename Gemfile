@@ -11,9 +11,11 @@ gem 'cssbundling-rails'
 gem 'devise'
 gem 'devise-i18n'
 gem 'haml-rails'
+gem 'image_processing'
 gem 'jbuilder'
 gem 'jsbundling-rails'
 gem 'kaminari'
+gem 'mini_magick'
 # rails newデフォルトのため
 gem 'pg', '~> 1.1'
 # rails newデフォルトのため
