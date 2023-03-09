@@ -5,17 +5,15 @@
     - @timelines.each do |post|
       .card.mb-2.w-75.mx-auto
         .card-header
-          - if post.user.image.attached?
-            = image_tag post.user.image, class: 'rounded-circle', size: '25x25'
-            = post.user.name
+          - if post.user.avater.attached?
+            = image_tag post.user.avater, class: 'rounded-circle', size: '25x25'
           - else
             = image_tag 'default.jpeg', size: '25x25'
-            = post.user.name
+          = post.user.name
         .card-body
           .card-text
             %p= link_to post.content, post_path(post), class: 'text-reset text-decoration-none'
-            - if post.image.attached?
-              = image_tag post.image, alt: '画像', width: '10%', height: '10%'
+            = image_tag post.display_image, alt: '画像' if post.image.attached?
             .d-flex
               %p.me-1= l post.created_at
               = render 'shared/like_link', post:

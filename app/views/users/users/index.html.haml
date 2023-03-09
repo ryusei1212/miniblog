@@ -3,8 +3,8 @@
     - unless current_user == user
       .border.w-50.mx-auto.p-2
         .d-flex
-          - if user.image.attached?
-            = image_tag user.image, class: 'rounded-circle', size: '50x50'
+          - if user.avater.attached?
+            = image_tag user.avater, class: 'rounded-circle', size: '50x50'
           - else
             = image_tag 'default.jpeg', size: '50x50'
           = link_to user.name, user_path(user), class: 'fs-3 text-reset'

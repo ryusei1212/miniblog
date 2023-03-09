@@ -2,7 +2,7 @@
   .card-body
     .card-text
       %p= link_to post.content, post_path(post), class: 'text-reset'
-      = posted_image(post.image)
+      = image_tag post.display_image, alt: '画像' if post.image.attached?
       .d-flex
         %p.me-1= l post.created_at
         = render 'shared/like_link', post:
