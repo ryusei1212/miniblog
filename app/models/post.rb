@@ -9,7 +9,7 @@ class Post < ApplicationRecord
 
   validates :image, content_type: %w[image/png image/jpeg], size: { less_than: 5.megabytes }
 
-  scope :default_order, -> { order(created_at: :desc) }
+  scope :default_order, -> { order(created_at: :desc, id: :asc) }
 
   def display_image
     image.variant(resize_to_limit: [100, 100])
