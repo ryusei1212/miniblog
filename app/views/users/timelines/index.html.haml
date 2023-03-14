@@ -19,3 +19,5 @@
               - if current_user.posts.include?(post)
                 = link_to edit_post_path(post), class: 'text-reset ms-auto' do
                   %i.bi.bi-pen-fill
+
+    = paginate @timelines

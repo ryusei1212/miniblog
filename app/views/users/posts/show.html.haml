@@ -2,6 +2,7 @@
   .card.mt-5
     .card-header
       = gravatar_for(@post.user)
+      = @post.user.name
     .card-body
       .card-text
         %p= @post.content
