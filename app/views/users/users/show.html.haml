@@ -1,10 +1,7 @@
 .card.w-75.mx-auto.mt-3
   .card-body
     .card-title
-      - if @user.avater.attached?
-        = image_tag @user.avater, class: 'rounded-circle', size: '150x150'
-      - else
-        = image_tag 'default.jpeg', size: '150x150'
+      = gravatar_for(@user, size: 100)
       - if current_user == @user
         = link_to edit_user_path(current_user), class: 'btn mb-2' do
           %i.bi.bi-pen-fill.text-reset 編集

@@ -6,14 +6,12 @@ class User < ApplicationRecord
   has_many :followers, through: :passive_relationships, source: :follower
   has_many :likes, dependent: :destroy
   has_many :comments, dependent: :destroy
-  has_one_attached :avater
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable
 
   validates :name, presence: true, length: { maximum: 20 } # TODO: seedでデータを作成する際に条件が厳しするぎるため format: { with: /\A[a-zA-Z]+\z/ }
-  validates :profile, length: { maximum: 200 }
-  validates :avater, content_type: %w[image/png image/jpeg], size: { less_than: 5.megabytes }
+  validates :profile, length: { maximum: 140 }
 
   scope :default_order, -> { order(created_at: :desc) }
 

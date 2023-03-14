@@ -1,13 +1,11 @@
 .mt-5
   - @users.each do |user|
     - unless current_user == user
-      .border.w-50.mx-auto.p-2
-        .d-flex
-          - if user.avater.attached?
-            = image_tag user.avater, class: 'rounded-circle', size: '50x50'
-          - else
-            = image_tag 'default.jpeg', size: '50x50'
+      .card.w-50.mx-auto.p-2
+        .card-title
+          = gravatar_for(user)
           = link_to user.name, user_path(user), class: 'fs-3 text-reset'
-        %p= user.profile
+        .card-body
+          %p= user.profile
 
 = paginate @users

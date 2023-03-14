@@ -1,10 +1,7 @@
 .w-50.mx-auto
   .card.mt-5
     .card-header
-      - if @post.user.avater.attached?
-        = image_tag @post.user.avater, alt: '画像', class: 'rounded-circle', size: '25x25'
-      - else
-        = image_tag 'default.jpeg', size: '25x25'
+      = gravatar_for(@post.user)
       = @post.user.name
     .card-body
       .card-text

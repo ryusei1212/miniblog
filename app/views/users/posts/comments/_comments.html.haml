@@ -1,12 +1,10 @@
 - comments.each do |comment|
   .card.my-3
     .card-header
-      .d-flex
-        .pt-1= "#{comment.user.name}さんのコメント"
-        - if comment.user == current_user
-          .ms-auto
-            = link_to comment_path(comment), data: { turbo_method: :delete, turbo_confirm: '本当に削除しますか？' }, class: 'text-reset comment-destroy-link btn' do
-              %i.bi.bi-trash 削除
-
+      = gravatar_for(comment.user)
+      = "#{comment.user.name}さんのコメント"
+      - if comment.user == current_user
+        = link_to comment_path(comment), data: { turbo_method: :delete, turbo_confirm: '本当に削除しますか？' }, class: 'text-reset comment-destroy-link btn' do
+          %i.bi.bi-trash 削除
     .card-body
       = comment.content
