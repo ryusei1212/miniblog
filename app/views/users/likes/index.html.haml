@@ -1,10 +1,6 @@
 .mt-5
   - @liked_users.each do |user|
     .border.w-50.mx-auto.p-2
-      .d-flex
-        - if user.avater.attached?
-          = image_tag user.avater, class: 'rounded-circle', size: '50x50'
-        - else
-          = image_tag 'default.jpeg', size: '50x50'
-        = link_to user.name, user_path(user), class: 'fs-3 text-reset'
-      %p= user.profile
+      = gravatar_for(user)
+      = link_to user.name, user_path(user), class: 'fs-3 text-reset'
+    %p= user.profile
