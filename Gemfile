@@ -5,14 +5,17 @@ ruby '3.1.3'
 
 gem 'rails', '7.0.4'
 
+gem 'active_storage_validations'
 gem 'bootsnap', require: false
 gem 'cssbundling-rails'
 gem 'devise'
 gem 'devise-i18n'
 gem 'haml-rails'
+gem 'image_processing'
 gem 'jbuilder'
 gem 'jsbundling-rails'
 gem 'kaminari'
+gem 'mini_magick'
 # rails newデフォルトのため
 gem 'pg', '~> 1.1'
 # rails newデフォルトのため

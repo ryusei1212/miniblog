@@ -3,15 +3,6 @@ Rails.application.routes.draw do
     sessions: 'users/sessions',
   }
 
-  # resources :users, only: %i[index show edit update], module: :users do
-  #   resources :posts, only: %i[index show create edit update destroy] do
-  #     resource :like, only: %i[create destroy]
-  #   end
-  #   resources :timelines, only: :index
-  #   resource :relationships, only: %i[create destroy]
-  #   get :following, :followers, on: :member
-  # end
-
   root 'users/timelines#index'
 
   scope module: 'users' do

@@ -21,7 +21,7 @@ class Users::PostsController < Users::ApplicationController
 
   def update
     if @post.update(post_params)
-      redirect_to timelines_path
+      redirect_to timelines_path, notice: '更新しました'
     else
       render :edit, status: :unprocessable_entity
     end
@@ -39,6 +39,6 @@ class Users::PostsController < Users::ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:content)
+    params.require(:post).permit(:content, :image)
   end
 end

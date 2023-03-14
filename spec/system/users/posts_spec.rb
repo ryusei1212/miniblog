@@ -41,16 +41,19 @@ RSpec.describe '投稿内容のCRUD機能', type: :system do
   end
 
   describe '投稿' do
-    it '文章を投稿できる' do
+    it '文章と画像を投稿できる' do
       sign_in user
       visit timelines_path
       fill_in 'post[content]', with: 'おはようございます'
+      attach_file 'post[image]', Rails.root.join('spec/fixtures/image/image_book.png')
+
       expect do
         click_button '投稿する'
       end.to change(Post, :count).by(1)
 
       expect(page).to have_current_path timelines_path
       expect(page).to have_content 'おはようございます'
+      expect(page).to have_selector "img[src$='image_book.png']"
       expect(page).to have_content '投稿に成功しました'
     end
   end

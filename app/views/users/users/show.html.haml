@@ -1,15 +1,19 @@
 .card.w-75.mx-auto.mt-3
   .card-body
-    .card-body
-      .card-title
-        %span.fs-2= @user.name
-        .card-text= @user.profile
-        %p.card-text.text-muted.mt-2= "#{l @user.created_at, format: :short}からminiblog利用しています"
-        .d-flex.justify-content-evenly
-          = link_to "#{@user.following.count}フォロー", following_user_path(@user), class: 'text-reset me-2'
-          = link_to "#{@user.followers.count}フォロワー", followers_user_path(@user), class: 'text-reset'
-          - if current_user == @user
-            = link_to 'プロフィール編集', edit_user_path(current_user), class: 'btn btn-primary mb-2 ms-auto'
-          - else
-            = render 'follow_form', user: @user
+    .card-title
+      - if @user.avater.attached?
+        = image_tag @user.avater, class: 'rounded-circle', size: '150x150'
+      - else
+        = image_tag 'default.jpeg', size: '150x150'
+      - if current_user == @user
+        = link_to edit_user_path(current_user), class: 'btn mb-2' do
+          %i.bi.bi-pen-fill.text-reset 編集
+      - else
+        = render 'follow_form', user: @user
+      %p.fs-2= @user.name
+      .card-text= @user.profile
+      %p.card-text.text-muted.mt-2= "#{l @user.created_at, format: :short}からminiblog利用しています"
+      .d-flex
+        = link_to "#{@user.following.count}フォロー", following_user_path(@user), class: 'text-reset me-2'
+        = link_to "#{@user.followers.count}フォロワー", followers_user_path(@user), class: 'text-reset'
 = render @posts

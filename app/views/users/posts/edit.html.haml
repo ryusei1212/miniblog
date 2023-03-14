@@ -1,5 +1,7 @@
 .mt-4
   .w-50.mx-xl-auto
-    = render 'form', post: @post
-    .d-flex.justify-content-end
-      = button_to '削除', post_path, method: :delete, data: { turbo_method: :delete, turbo_confirm: '本当に削除しますか？' }, class: 'btn btn-danger'
+    .mt-3
+      %p= image_tag @post.display_image if @post.image.attached?
+      = render 'form', post: @post
+      .d-flex.justify-content-end
+        = button_to '削除', post_path, method: :delete, data: { turbo_method: :delete, turbo_confirm: '本当に削除しますか？' }, class: 'btn btn-danger'
