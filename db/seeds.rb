@@ -6,7 +6,7 @@ User.create!(
   confirmed_at: Time.zone.now
 )
 
-5.times do
+100.times do
   User.create!(
     name: Faker::Name.unique.name,
     email: Faker::Internet.unique.email,

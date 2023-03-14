@@ -11,7 +11,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, :confirmable
 
   validates :name, presence: true, length: { maximum: 20 } # TODO: seedでデータを作成する際に条件が厳しするぎるため format: { with: /\A[a-zA-Z]+\z/ }
-  validates :profile, length: { maximum: 200 }
+  validates :profile, length: { maximum: 140 }
 
   scope :default_order, -> { order(created_at: :desc) }
 
