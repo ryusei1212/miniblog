@@ -7,7 +7,7 @@ class Post < ApplicationRecord
 
   validates :content, presence: true, length: { maximum: 140 }
 
-  validates :image, content_type: %i[png jpg jpeg], size: { less_than: 5.megabytes }
+  validates :image, content_type: %w[image/png image/jpeg], size: { less_than: 5.megabytes }
 
   scope :default_order, -> { order(created_at: :desc) }
 
