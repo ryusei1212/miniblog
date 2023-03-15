@@ -8,7 +8,7 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
 
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable, :confirmable
+         :recoverable, :rememberable, :validatable
 
   validates :name, presence: true, length: { maximum: 20 } # TODO: seedでデータを作成する際に条件が厳しするぎるため format: { with: /\A[a-zA-Z]+\z/ }
   validates :profile, length: { maximum: 140 }
