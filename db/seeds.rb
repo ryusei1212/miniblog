@@ -2,16 +2,14 @@
 User.create!(
   name: 'foo',
   email: 'foo@example.com',
-  password: 'foofoo',
-  confirmed_at: Time.zone.now
+  password: 'foofoo'
 )
 
 50.times do
   User.create!(
     name: Faker::Name.unique.name,
     email: Faker::Internet.unique.email,
-    password: 'password',
-    confirmed_at: Time.zone.now
+    password: 'password'
   )
 end
 
