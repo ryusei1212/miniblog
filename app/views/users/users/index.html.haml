@@ -7,5 +7,6 @@
           = link_to user.name, user_path(user), class: 'fs-3 text-reset'
         .card-body
           %p= user.profile
+          = render 'follow_form', user:
 
 = paginate @users
