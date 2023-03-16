@@ -31,6 +31,6 @@ posts = Post.all
 
 posts.each do |post|
   rand(1..30).times do
-    post.likes.create(user: users.sample, created_at: '2023-03-15 12:34:56')
+    post.likes.create(user: users.sample) #  created_at: '2023-03-15 12:34:56'
   end
 end
