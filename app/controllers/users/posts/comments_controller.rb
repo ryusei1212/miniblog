@@ -5,7 +5,7 @@ class Users::Posts::CommentsController < Users::Posts::ApplicationController
     comment = @post.comments.build(comment_params)
     comment.user = current_user
     if comment.save
-      CommentMailer.with(comment:, post: @post).notify_comment.deliver_now unless @post.user == current_user
+      # CommentMailer.with(comment:, post: @post).notify_comment.deliver_now unless @post.user == current_user
       redirect_to post_path(@post), notice: 'コメントしました'
     else
       redirect_to post_path(@post), alert: 'コメントを入力してください'
