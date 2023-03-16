@@ -7,10 +7,12 @@
           %i.bi.bi-pen-fill.text-reset 編集
       - else
         = render 'follow_form', user: @user
-      %p.fs-2= @user.name
+      .fs-2= @user.name
       .card-text= @user.profile
-      %p.card-text.text-muted.mt-2= "#{l @user.created_at, format: :short}からminiblog利用しています"
-      .d-flex
+      .card-text.text-muted.mt-2= "#{l @user.created_at, format: :short}からminiblog利用しています"
+      .text-muted= "投稿数#{@user.posts.count}"
+      .d-flex.mt-2
         = link_to "#{@user.following.count}フォロー", following_user_path(@user), class: 'text-reset me-2'
         = link_to "#{@user.followers.count}フォロワー", followers_user_path(@user), class: 'text-reset'
 = render @posts
+= paginate @posts
