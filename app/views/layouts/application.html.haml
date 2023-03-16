@@ -10,7 +10,7 @@
     = javascript_include_tag "application", "data-turbo-track": "reload", defer: true
   %body
     = render 'layouts/header'
-    .d-flex.justify-content-end.mt-2.position-absolute.top-0.end-10
+    .d-flex.justify-content-end.mt-2.position-fixed.top-0.end-0
       = render 'shared/flash'
     .container
       = yield
