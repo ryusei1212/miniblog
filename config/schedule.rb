@@ -3,6 +3,6 @@ rails_env = ENV['RAILS_ENV'] || :development # cronを実行する環境変数(:
 set :environment, rails_env # cronを実行する環境変数をセット
 set :output, "#{Rails.root}/log/crontab.log" # cronのログ出力用ファイル
 
-every 1.day, at: '10:05 am' do # タスクの実行間隔
+every 1.day, at: '14:10 pm' do # タスクの実行間隔
   rake 'like_ranking:daily_ranking_email' # ← rake "タスクのファイル名 : タスク名"
 end
