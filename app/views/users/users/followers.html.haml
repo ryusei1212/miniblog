@@ -6,3 +6,6 @@
         .card-title
           = gravatar_for(follower_user)
           = link_to follower_user.name, user_path(follower_user), class: 'fs-3 text-reset'
+      .card-body
+        %p= @user.profile
+        = render 'follow_form', user: follower_user
