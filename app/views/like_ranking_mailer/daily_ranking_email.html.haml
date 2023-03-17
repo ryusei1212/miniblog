@@ -10,7 +10,7 @@
   - @top_10_posts.each.with_index(1) do |group, i|
     - post_id, like_count = group
     - post = Post.find(post_id)
-    %p= "【#{i}位】: #{post.user.name}さんの投稿: 「#{post.content}"
+    %p= "【#{i}位】 #{post.user.name}さんの投稿: 「#{post.content}」"
     %strong= "いいね数: #{like_count}"
 
-  %p 他にも素晴らしい投稿がたくさんありますので、ぜひご覧ください。」
+  %p 他にも素晴らしい投稿がたくさんありますので、ぜひご覧ください。
