@@ -6,7 +6,6 @@ class Post < ApplicationRecord
   has_one_attached :image
 
   validates :content, presence: true, length: { maximum: 140 }
-
   validates :image, content_type: %w[image/png image/jpeg], size: { less_than: 5.megabytes }
 
   scope :default_order, -> { order(created_at: :desc, id: :asc) }
