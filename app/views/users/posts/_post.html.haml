@@ -1,4 +1,7 @@
 .card.my-1.w-75.mx-auto
+  .card-header
+    = gravatar_for(user)
+    = user.name
   .card-body
     .card-text
       %p= link_to post.content, post_path(post), class: 'text-reset'

@@ -1,0 +1,16 @@
+%h1 miniblog
+
+%p いつもminiblogをご利用いただき、誠にありがとうございます。
+
+%h2 昨日のいいね数ランキングTOP10の投稿をご紹介します。
+
+- if @top_10_posts.blank?
+  %p 前日にいいねされた投稿はありませんでした。
+- else
+  - @top_10_posts.each.with_index(1) do |group, i|
+    - post_id, like_count = group
+    - post = Post.find(post_id)
+    %p= "【#{i}位】 #{post.user.name}さんの投稿: 「#{post.content}」"
+    %strong= "いいね数: #{like_count}"
+
+  %p 他にも素晴らしい投稿がたくさんありますので、ぜひご覧ください。

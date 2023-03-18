@@ -1,8 +1,10 @@
 .text-center.fs-3.my-3 フォロー中
 .mt-1
-  - if @user.following.presence
-    - @user.following.each do |follow_user|
-      .card.w-50.mx-auto.p-2
-        .card-title
-          = gravatar_for(follow_user)
-          = link_to follow_user.name, user_path(follow_user), class: 'fs-3 text-reset'
+  - @user.following.each do |follow_user|
+    .card.w-50.mx-auto.p-2
+      .card-title
+        = gravatar_for(follow_user)
+        = link_to follow_user.name, user_path(follow_user), class: 'fs-3 text-reset'
+      .card-body
+        %p= @user.profile
+        = render 'follow_form', user: follow_user

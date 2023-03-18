@@ -14,5 +14,5 @@
       .d-flex.mt-2
         = link_to "#{@user.following.count}フォロー", following_user_path(@user), class: 'text-reset me-2'
         = link_to "#{@user.followers.count}フォロワー", followers_user_path(@user), class: 'text-reset'
-= render @posts
+= render @posts, user: @user
 = paginate @posts
