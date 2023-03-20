@@ -58,7 +58,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_05_094626) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["post_id", "user_id"], name: "index_likes_on_post_id_and_user_id", unique: true
-    t.index ["post_id"], name: "index_likes_on_post_id"
     t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
@@ -77,7 +76,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_05_094626) do
     t.datetime "updated_at", null: false
     t.index ["followed_id"], name: "index_relationships_on_followed_id"
     t.index ["follower_id", "followed_id"], name: "index_relationships_on_follower_id_and_followed_id", unique: true
-    t.index ["follower_id"], name: "index_relationships_on_follower_id"
   end
 
   create_table "users", force: :cascade do |t|
