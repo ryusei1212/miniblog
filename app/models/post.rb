@@ -9,6 +9,7 @@ class Post < ApplicationRecord
   validates :image, content_type: %w[image/png image/jpeg], size: { less_than: 5.megabytes }
 
   scope :default_order, -> { order(created_at: :desc, id: :asc) }
+  scope :timeline, ->(user) { where(user_id: [user.id, *user.following_ids]) }
   scope :top_10_daily_likes, -> {
     joins(:likes)
       .where(likes: { created_at: Date.yesterday.all_day })
