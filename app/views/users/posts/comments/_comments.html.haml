@@ -4,7 +4,7 @@
       = gravatar_for(comment.user)
       = "#{comment.user.name}さんのコメント"
       - if comment.user == current_user
-        = link_to comment_path(comment), data: { turbo_method: :delete, turbo_confirm: '本当に削除しますか？' }, class: 'text-reset comment-destroy-link btn' do
+        = link_to post_comment_path(@post, comment), data: { turbo_method: :delete, turbo_confirm: '本当に削除しますか？' }, class: 'text-reset comment-destroy-link btn' do
           %i.bi.bi-trash 削除
     .card-body
       = comment.content

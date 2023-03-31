@@ -16,10 +16,8 @@ gem 'jbuilder'
 gem 'jsbundling-rails'
 gem 'kaminari'
 gem 'mini_magick'
-# rails newデフォルトのため
-gem 'pg', '~> 1.1'
-# rails newデフォルトのため
-gem 'puma', '~> 5.0'
+gem 'pg'
+gem 'puma'
 gem 'simple_form'
 gem 'sprockets-rails'
 gem 'stimulus-rails'
@@ -28,8 +26,6 @@ gem 'whenever', require: false
 
 group :development, :test do
   gem 'debug', platforms: %i[mri mingw x64_mingw]
-  gem 'factory_bot_rails'
-  gem 'rspec-rails'
   gem 'sgcop', github: 'SonicGarden/sgcop'
 end
 
@@ -44,8 +40,10 @@ end
 group :test do
   gem 'capybara'
   gem 'email_spec'
+  gem 'factory_bot_rails'
+  gem 'rspec-rails'
   gem 'selenium-webdriver'
   gem 'webdrivers'
 end
 
-gem 'dockerfile-rails', '>= 1.2', group: :development
+gem 'dockerfile-rails', '>= 1.2', group: :development # fly launch コマンド実行後に追加された

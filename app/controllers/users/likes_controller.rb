@@ -1,8 +1,4 @@
 class Users::LikesController < Users::ApplicationController
-  def index
-    post = Post.find(params[:post_id])
-    @liked_users = post.liked_users.default_order.page(params[:page])
-  end
 
   def create
     current_user.likes.create!(post_id: params[:post_id])

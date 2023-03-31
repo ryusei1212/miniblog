@@ -16,7 +16,7 @@
             = link_to edit_post_path(@post), class: 'text-reset ms-auto' do
               %i.bi.bi-pen-fill
         - if @post.likes.count.positive?
-          .border-top= link_to "#{@post.likes.count}件のいいね", post_likes_path(@post), class: 'text-reset'
+          .border-top= link_to "#{@post.likes.count}件のいいね", post_liked_users_path(@post), class: 'text-reset'
 
   .border-top.mt-2
     .mx-auto.mt-2
